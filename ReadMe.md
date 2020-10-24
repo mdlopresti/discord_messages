@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/mdlopresti/scheduled_discord_messages/workflows/Docker%20Image%20CI/badge.svg)
+
 # TBD Name
 
 A discord notification bot/learn docker/kubernetes project.
