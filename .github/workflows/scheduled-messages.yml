@@ -1,0 +1,43 @@
+name: scheduled message sending
+
+on:
+  schedule:
+    - cron: 0 12 * * 3
+
+jobs:
+  notification:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Which party is it this week?
+        run: |
+          $startdate = [datetime]"10/7/2020 00:00"
+          $enddate = get-date
+          $time = New-TimeSpan -start $startdate -end $enddate
+          $time.Days/14
+          if (($time.Days/14) -match '.5') {
+            Write-Host "::set-output name=party::FleshAndSteel"
+          } else {
+            Write-Host "::set-output name=party::Covid"
+          }
+        id: which_party
+
+      - name: build docker image
+        run: docker build . --file Dockerfile --tag notifier
+
+      - name: send notifications
+        run: |
+          if($env:PARTY_THIS_WEEK -eq "FleshAndSteel") {
+            $FleshAndSteelMessage = "There is a session today!"
+            $CovidMessage = "One week until the next session!"
+          } else {
+            $CovidMessage = "There is a session today!"
+            $FleshAndSteelMessage = "One week until the next session!"
+          }
+          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage notifier
+          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage notifier
+        env:
+          DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
+          DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
+          PARTY_THIS_WEEK: ${{ steps.which_party.party }}
