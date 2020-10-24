@@ -3,6 +3,7 @@ name: scheduled message sending
 on:
   schedule:
     - cron: 0 12 * * 3
+  workflow_dispatch:
 
 jobs:
   notification:
