@@ -2,11 +2,11 @@
 
 # TBD Name
 
-A discord notification bot/learn docker/kubernetes project.
+A discord notification bot/learn docker/kubernetes project.  Currrently this process is working via [scheduled github actions](https://github.com/mdlopresti/scheduled_discord_messages/actions?query=workflow%3A%22scheduled+message+sending%22), butt needs additional projects to handle the kubernetes goal.  
 
 ## Goals
 
-1. Automatically send out notifications to discord server channels
+1. ~~Automatically send out notifications to discord server channels~~
 2. ~~Use Docker for the runtime environment~~ Done!
 3. Use Kubernetes cronjobs to schedule the notifications
 
