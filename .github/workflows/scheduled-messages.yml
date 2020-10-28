@@ -37,8 +37,8 @@ jobs:
             $CovidMessage = "There is a session today!"
             $FleshAndSteelMessage = "One week until the next session!"
           }
-          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage notifier
-          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage notifier
+          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification notifier
+          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage -e USERNAME=Notification notifier
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
