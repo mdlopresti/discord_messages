@@ -19,10 +19,10 @@ jobs:
           Write-Host "current date is $enddate"
           $time = New-TimeSpan -start $startdate -end $enddate
           if (($time.Days/14) -match '.5') {
-            Write-Host "::set-output name=party::Covid"
+            Write-Host "::set-output name=PARTY::Covid"
             Write-Host "Unnamed covid campaign this week"
           } else {
-            Write-Host "::set-output name=party::FleshAndSteel"
+            Write-Host "::set-output name=PARTY::FleshAndSteel"
             Write-Host "Flesh and Steel this week"
           }
         id: which_party
@@ -44,4 +44,4 @@ jobs:
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          PARTY_THIS_WEEK: ${{ steps.which_party.party }}
+          PARTY_THIS_WEEK: ${{ steps.which_party.outputs.PARTY }}
