@@ -14,7 +14,9 @@ jobs:
       - name: Which party is it this week?
         run: |
           $startdate = [datetime]"10/7/2020 00:00"
+          Write-Host "start is $startdate"
           $enddate = get-date
+          Write-Host "current date is $enddate"
           $time = New-TimeSpan -start $startdate -end $enddate
           if (($time.Days/14) -match '.5') {
             Write-Host "::set-output name=party::Covid"
@@ -37,8 +39,8 @@ jobs:
             $CovidMessage = "There is a session today!"
             $FleshAndSteelMessage = "One week until the next session!"
           }
-          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification notifier
-          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage -e USERNAME=Notification notifier
+          # docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification notifier
+          # docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage -e USERNAME=Notification notifier
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
