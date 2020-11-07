@@ -6,9 +6,15 @@ A discord notification bot/learn docker/kubernetes project.  Currrently this pro
 
 ## Goals
 
-1. ~~Automatically send out notifications to discord server channels~~
+#### ~~MVP~~ Done!
+
+1. ~~Automatically send out notifications to discord server channels~~ Done!
 2. ~~Use Docker for the runtime environment~~ Done!
-3. Use Kubernetes cronjobs to schedule the notifications
+3. ~~Use GitHub Actions to run the container~~ Done!
+
+### Future Version
+
+4. Use Kubernetes cronjobs to schedule the notifications
 
 ## Environment Variables
 
