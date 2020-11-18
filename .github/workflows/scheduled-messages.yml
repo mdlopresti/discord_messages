@@ -19,11 +19,11 @@ jobs:
           Write-Host "current date is $enddate"
           $time = New-TimeSpan -start $startdate -end $enddate
           if (($time.Days/14) -match '.5') {
-            Write-Host "::set-output name=PARTY::Covid"
-            Write-Host "Unnamed covid campaign this week"
-          } else {
             Write-Host "::set-output name=PARTY::FleshAndSteel"
             Write-Host "Flesh and Steel this week"
+          } else {
+            Write-Host "::set-output name=PARTY::Covid"
+            Write-Host "Unnamed covid campaign this week"
           }
         id: which_party
 
