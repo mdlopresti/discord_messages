@@ -33,10 +33,10 @@ jobs:
       - name: send notifications
         run: |
           if($env:PARTY_THIS_WEEK -eq "FleshAndSteel") {
-            $FleshAndSteelMessage = "There is a session today!"
+            $FleshAndSteelMessage = "There is a session at 6:30 PM eastern today!"
             $CovidMessage = "One week until the next session!"
           } else {
-            $CovidMessage = "There is a session today!"
+            $CovidMessage = "There is a session at 5:30 PM eastern today!"
             $FleshAndSteelMessage = "One week until the next session!"
           }
           docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification notifier
