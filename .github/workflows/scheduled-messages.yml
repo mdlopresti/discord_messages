@@ -52,7 +52,7 @@ jobs:
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          FLESH_AND_STEEL_DATE: ${{ jobs.config.outputs.FLESH_AND_STEEL }}
+          FLESH_AND_STEEL_DATE: ${{ needs.jobs.config.outputs.FLESH_AND_STEEL }}
           FLESH_AND_STEEL_TIME: "6:30 PM"
-          COVID_DATE: ${{ jobs.config.outputs.COVID }}
+          COVID_DATE: ${{ needs.jobs.config.outputs.COVID }}
           COVID_TIME: "5:30 PM"
