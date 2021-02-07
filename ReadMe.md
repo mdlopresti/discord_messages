@@ -24,7 +24,8 @@ The tech used in this project was selected as a learning project, it is definite
 ### Improvements
 
 1. ~~Push container image into repo instead of building each time~~
-2. Remove as much logic as possible from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
+2. ~~Remove message logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)~~
+3. Remove which week is which logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
 
 ### Kubernetes
 
