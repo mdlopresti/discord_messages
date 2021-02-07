@@ -21,7 +21,7 @@ jobs:
           } until ($nextsession.DayOfWeek -eq "Wednesday")
 
           Write-Host "The next wednesday is $nextsession"
-          $time = New-TimeSpan -start $startdate -end $enddate
+          $time = New-TimeSpan -start $startdate -end $nextsession
           if (($time.Days/14) -match '.5') {
             $FleshAndSteel = $nextsession.ToString("yyyy MM dd")
             $Covid = $nextsession.addDays(7).ToString("yyyy MM dd")
