@@ -6,6 +6,13 @@ A discord notification bot project.  Currently this process is working via [sche
 
 The tech used in this project was selected as a learning project, it is definitely not the best approach to take but it is a good enough excuse to learn the tech.
 
+## Docker Tags
+
+- notifier
+  - a generic docker image capable of sending a discord message to a server via a web hook, no internal logic
+- specific
+  - a specialized version for my specific needs, shifts logic out of github actions
+
 ## Goals
 
 ### ~~MVP using CI~~ Done! [See MVP tag](https://github.com/mdlopresti/scheduled_discord_messages/releases/tag/MVP)
