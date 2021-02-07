@@ -27,9 +27,6 @@ jobs:
           }
         id: which_party
 
-      - name: build docker image
-        run: docker build . --file Dockerfile --tag notifier
-
       - name: send notifications
         run: |
           if($env:PARTY_THIS_WEEK -eq "FleshAndSteel") {
@@ -39,8 +36,8 @@ jobs:
             $CovidMessage = "There is a session at 5:30 PM eastern today!"
             $FleshAndSteelMessage = "One week until the next session!"
           }
-          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification notifier
-          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage -e USERNAME=Notification notifier
+          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e MESSAGE=$FleshAndSteelMessage -e USERNAME=Notification mdlopresti/scheduled_discord_messages:notifier
+          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e MESSAGE=$CovidMessage -e USERNAME=Notification mdlopresti/scheduled_discord_messages:notifier
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
