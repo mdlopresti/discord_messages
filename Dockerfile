@@ -1,4 +1,4 @@
-FROM python
+FROM python as notifier
 
 COPY main.py /tmp/main.py
 COPY requirements.txt /tmp/requirements.txt
