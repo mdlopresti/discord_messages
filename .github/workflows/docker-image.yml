@@ -4,12 +4,6 @@ on:
   repository_dispatch:
     branches:
       - master
-    paths:
-     - specific.py
-     - main.py
-     - requirements.txt
-     - Dockerfile
-     - .github\workflows\docker-image.yml
   workflow_dispatch:
 
 jobs:
