@@ -35,4 +35,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: mdlopresti/scheduled_discord_messages
-          tags: notifier,latest
+          tags: notifier,latest,specific
