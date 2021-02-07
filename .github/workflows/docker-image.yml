@@ -2,14 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [master]
-    paths:
-     - main.py
-     - requirements.txt
-     - Dockerfile
-     - .github\workflows\docker-image.yml
-  pull_request:
-    branches: [master]
+    branches:
+      - master
     paths:
      - main.py
      - requirements.txt
