@@ -3,7 +3,9 @@ import os
 
 def main():
     if 'NEXT_DATE' in os.environ:
+        print('NEXT_DATE is ' + os.environ['NEXT_DATE'])
         if 'NEXT_TIME' in os.environ:
+            print('NEXT_TIME is ' + os.environ['NEXT_TIME'])
             #next_date_list = '2021','2','17'
             next_date_list = os.environ['NEXT_DATE'].split()
 
@@ -18,6 +20,7 @@ def main():
             else: 
                 os.environ['MESSAGE'] = str(days_until_session) + ' days until the next session, which will be on ' + next_date.strftime('%A %B %d, %Y') + ' at ' + os.environ['NEXT_TIME']
 
+            print('MESSAGE will be "' + os.environ['MESSAGE'] + '"')
             os.system('python main.py')
 
         else:
