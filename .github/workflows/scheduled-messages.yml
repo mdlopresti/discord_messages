@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  notification:
+  config:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Determine next session dates
+      - name: Determine next session dates/times
         run: |
           $startdate = [datetime]"10/7/2020 00:00"
           Write-Host "start is $startdate"
@@ -37,6 +37,14 @@ jobs:
           }
         id: next_session_dates
 
+    outputs:
+      FLESH_AND_STEEL_DATE: ${{ steps.next_session_dates.outputs.FLESH_AND_STEEL }}
+      COVID_DATE: ${{ steps.next_session_dates.outputs.COVID }}
+
+  notifications:
+    needs: config
+    runs-on: ubuntu-20.04
+    steps:
       - name: send notifications
         run: |
           docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE=$env:FLESH_AND_STEEL_DATE -e NEXT_TIME=$env:FLESH_AND_STEEL_TIME mdlopresti/scheduled_discord_messages:specific
@@ -44,7 +52,7 @@ jobs:
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          FLESH_AND_STEEL_DATE: ${{ steps.next_session_dates.outputs.FLESH_AND_STEEL }}
+          FLESH_AND_STEEL_DATE: ${{ jobs.config.outputs.FLESH_AND_STEEL }}
           FLESH_AND_STEEL_TIME: "6:30 PM"
-          COVID_DATE: ${{ steps.next_session_dates.outputs.COVID }}
+          COVID_DATE: ${{ jobs.config.outputs.COVID }}
           COVID_TIME: "5:30 PM"
