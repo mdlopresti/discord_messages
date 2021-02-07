@@ -5,6 +5,7 @@ on:
     branches:
       - master
     paths:
+     - specific.py
      - main.py
      - requirements.txt
      - Dockerfile
