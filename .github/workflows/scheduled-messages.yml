@@ -9,8 +9,6 @@ jobs:
   config:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-
       - name: Determine next session dates/times
         run: |
           $startdate = [datetime]"10/7/2020 00:00"
@@ -27,14 +25,14 @@ jobs:
             $Covid = $nextsession.addDays(7).ToString("yyyy MM dd")
             Write-Host "::set-output name=FLESH_AND_STEEL::$FleshAndSteel"
             Write-Host "::set-output name=COVID::$Covid"
-            Write-Host "Flesh and Steel this week"
           } else {
             $FleshAndSteel = $nextsession.addDays(7).ToString("yyyy MM dd")
             $Covid = $nextsession.ToString("yyyy MM dd")
             Write-Host "::set-output name=FLESH_AND_STEEL::$FleshAndSteel"
             Write-Host "::set-output name=COVID::$Covid"
-            Write-Host "Unnamed covid campaign this week"
           }
+          Write-Host "FLESH_AND_STEEL_DATE = $FleshAndSteel"
+          Write-Host "COVID_DATE = $Covid"
         id: next_session_dates
 
     outputs:
@@ -47,8 +45,8 @@ jobs:
     steps:
       - name: send notifications
         run: |
-          docker run -e WEBHOOK=$env:DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE=$env:FLESH_AND_STEEL_DATE -e NEXT_TIME=$env:FLESH_AND_STEEL_TIME mdlopresti/scheduled_discord_messages:specific
-          docker run -e WEBHOOK=$env:DISCORD_COVID_WEBHOOK -e NEXT_DATE=$env:COVID_DATE -e NEXT_TIME=$env:COVID_TIME mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE=$FLESH_AND_STEEL_DATE -e NEXT_TIME=$FLESH_AND_STEEL_TIME mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$DISCORD_COVID_WEBHOOK -e NEXT_DATE=$COVID_DATE -e NEXT_TIME=$COVID_TIME mdlopresti/scheduled_discord_messages:specific
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
