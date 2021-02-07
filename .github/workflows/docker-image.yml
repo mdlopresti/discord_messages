@@ -22,8 +22,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image
+      - name: Build the Docker notifier image
         run: docker build --target notifier -t mdlopresti/scheduled_discord_messages:notifier -t mdlopresti/scheduled_discord_messages:latest .
+
+      - name: Build the Docker specific image
+        run: docker build --target specific -t mdlopresti/scheduled_discord_messages:specific .
 
       - name: Push image to Docker Hub
         if: ${{ github.ref == 'refs/heads/master' }}
