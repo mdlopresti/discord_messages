@@ -27,9 +27,11 @@ The tech used in this project was selected as a learning project, it is definite
 2. ~~Remove message logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)~~
 3. Remove which week is which logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
 
-### Kubernetes
+### Github Actions
 
-It is time to learn some Kubernetes.  Goal here is to shift from using Github Actions to run the containerized notification process and into Kubernetes.
+Convert [container image](https://hub.docker.com/layers/mdlopresti/scheduled_discord_messages/) into github action.  [doc link for later]
+
+### Kubernetes
 
 1. Create kubernetes job definition
     1. Should assign Environment variables via configMaps/secrets
