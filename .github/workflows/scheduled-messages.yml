@@ -1,4 +1,4 @@
-name: scheduled message sending
+name: Send Messages
 
 on:
   schedule:
