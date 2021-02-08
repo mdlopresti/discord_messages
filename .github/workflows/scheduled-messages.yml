@@ -51,7 +51,7 @@ jobs:
         env:
           WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DATE: ${{ needs.config.outputs.FLESH_AND_STEEL_DATE }}
-          TIME: "6:30 PM"
+          TIME: "6:30 PM eastern, 5:30 PM central"
 
       - name: send notification to covid
         shell: bash

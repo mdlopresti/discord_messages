@@ -1,5 +1,6 @@
 import datetime
 import os
+from pytz import timezone
 from main import main
 
 def message():
@@ -11,7 +12,7 @@ def message():
             next_date_list = os.environ['NEXT_DATE'].split()
 
             next_date = datetime.datetime.strptime(next_date_list[0] + ' ' + next_date_list[1] + ' ' + next_date_list[2], '%Y %m %d').date()
-            today = datetime.datetime.today().date()
+            today = datetime.datetime.today(tz=timezone('US/Eastern')).date()
             days_until_session = (next_date - today).days
 
             if days_until_session == 7:
