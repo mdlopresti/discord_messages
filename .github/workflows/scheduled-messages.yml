@@ -20,7 +20,7 @@ jobs:
 
           Write-Host "The next wednesday is $nextsession"
           $time = New-TimeSpan -start $startdate -end $nextsession
-          if (($time.Days/14) -match '.5') {
+          if (($time.Days/14) -match ".5") {
             $FleshAndSteel = $nextsession.ToString("yyyy MM dd")
             $Covid = $nextsession.addDays(7).ToString("yyyy MM dd")
             Write-Host "::set-output name=FLESH_AND_STEEL::$FleshAndSteel"
@@ -46,8 +46,8 @@ jobs:
       - name: send notifications
         shell: bash
         run: |
-          docker run -e WEBHOOK=$DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE='$FLESH_AND_STEEL_DATE' -e NEXT_TIME='$FLESH_AND_STEEL_TIME' mdlopresti/scheduled_discord_messages:specific
-          docker run -e WEBHOOK=$DISCORD_COVID_WEBHOOK -e NEXT_DATE='$COVID_DATE' -e NEXT_TIME='$COVID_TIME' mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE="$FLESH_AND_STEEL_DATE" -e NEXT_TIME="$FLESH_AND_STEEL_TIME" mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$DISCORD_COVID_WEBHOOK -e NEXT_DATE="$COVID_DATE" -e NEXT_TIME="$COVID_TIME" mdlopresti/scheduled_discord_messages:specific
         env:
           DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
