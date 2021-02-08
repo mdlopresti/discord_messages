@@ -50,7 +50,7 @@ jobs:
           docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
-          DATE: ${{ needs.config.config.outputs.FLESH_AND_STEEL_DATE }}
+          DATE: ${{ needs.config.outputs.FLESH_AND_STEEL_DATE }}
           TIME: "6:30 PM"
 
       - name: send notification to covid
@@ -61,5 +61,5 @@ jobs:
           docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          DATE: ${{ needs.config.config.outputs.COVID_DATE }}
+          DATE: ${{ needs.config.outputs.COVID_DATE }}
           TIME: "5:30 PM"
