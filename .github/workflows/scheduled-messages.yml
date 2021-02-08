@@ -8,8 +8,12 @@ on:
 jobs:
   config:
     runs-on: windows-latest
+    outputs:
+      FLESH_AND_STEEL_DATE: ${{ steps.next_session_dates.outputs.FLESH_AND_STEEL }}
+      COVID_DATE: ${{ steps.next_session_dates.outputs.COVID }}
     steps:
-      - name: Determine next session dates/times
+      - id: next_session_dates
+        name: Determine next session dates/times
         run: |
           $startdate = [datetime]"10/7/2020 00:00"
           Write-Host "start is $startdate"
@@ -33,11 +37,6 @@ jobs:
           }
           Write-Host "FLESH_AND_STEEL_DATE = $FleshAndSteel"
           Write-Host "COVID_DATE = $Covid"
-        id: next_session_dates
-
-    outputs:
-      FLESH_AND_STEEL_DATE: ${{ steps.next_session_dates.outputs.FLESH_AND_STEEL }}
-      COVID_DATE: ${{ steps.next_session_dates.outputs.COVID }}
 
   notifications:
     needs: config
