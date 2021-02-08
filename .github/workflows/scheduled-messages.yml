@@ -44,6 +44,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: send notifications
+        shell: bash
         run: |
           docker run -e WEBHOOK=$DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE='$FLESH_AND_STEEL_DATE' -e NEXT_TIME='$FLESH_AND_STEEL_TIME' mdlopresti/scheduled_discord_messages:specific
           docker run -e WEBHOOK=$DISCORD_COVID_WEBHOOK -e NEXT_DATE='$COVID_DATE' -e NEXT_TIME='$COVID_TIME' mdlopresti/scheduled_discord_messages:specific
