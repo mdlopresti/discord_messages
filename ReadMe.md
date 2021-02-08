@@ -1,6 +1,6 @@
 # Scheduled Discord Messages
 
-[![Find on DockerHub](https://img.shields.io/badge/On%20DockerHub%3F-Yup-green)](https://hub.docker.com/layers/mdlopresti/discord_messages)
+[![Find on DockerHub](https://img.shields.io/badge/On%20DockerHub%3F-Yup-green)](https://hub.docker.com/r/mdlopresti/discord_messages)
 
 A discord notification bot project.  Currently this process is working via [scheduled github actions](https://github.com/mdlopresti/discord_messages/actions?query=workflow%3A%22scheduled+message+sending%22).  
 
