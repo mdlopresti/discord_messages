@@ -1,7 +1,8 @@
 import datetime
 import os
+from main import main
 
-def main():
+def message():
     if 'NEXT_DATE' in os.environ:
         print('NEXT_DATE is ' + os.environ['NEXT_DATE'])
         if 'NEXT_TIME' in os.environ:
@@ -23,9 +24,11 @@ def main():
             print('MESSAGE will be "' + os.environ['MESSAGE'] + '"')
             os.system('python main.py')
 
+            main()
+
         else:
             print('NEXT_TIME is a mandatory environment variable and is not set')
     else:
         print('NEXT_DATE is a mandatory environment variable and is not set')
 
-main()
+message()
