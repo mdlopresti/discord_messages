@@ -45,21 +45,19 @@ jobs:
       - name: send notification to flesh and steel
         shell: bash
         run: |
-          echo "date is $DATE"
+          echo "date is $${{ needs.jobs.config.outputs.FLESH_AND_STEEL_DATE }}"
           echo "time is $TIME"
-          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$${{ needs.jobs.config.outputs.FLESH_AND_STEEL_DATE }}" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
-          DATE: ${{ needs.jobs.config.outputs.FLESH_AND_STEEL_DATE }}
           TIME: "6:30 PM"
 
       - name: send notification to covid
         shell: bash
         run: |
-          echo "date is $DATE"
+          echo "date is ${{ needs.jobs.config.outputs.COVID_DATE }}"
           echo "time is $TIME"
-          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$${{ needs.jobs.config.outputs.COVID_DATE }}" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          DATE: ${{ needs.jobs.config.outputs.COVID_DATE }}
           TIME: "5:30 PM"
