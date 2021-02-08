@@ -5,20 +5,22 @@ on:
     branches:
       - master
     paths:
-     - specific.py
+     - .github\workflows\docker-image.yml
+     - Dockerfile
      - main.py
      - requirements.txt
-     - Dockerfile
-     - .github\workflows\docker-image.yml
+     - specific.py
+     - specific.requirements.txt
   push:
     branches:
       - master
     paths:
-     - specific.py
+     - .github\workflows\docker-image.yml
+     - Dockerfile
      - main.py
      - requirements.txt
-     - Dockerfile
-     - .github\workflows\docker-image.yml
+     - specific.py
+     - specific.requirements.txt
   workflow_dispatch:
 
 jobs:

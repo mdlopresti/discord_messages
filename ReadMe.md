@@ -8,34 +8,12 @@ The tech used in this project was selected as a learning project, it is definite
 
 ## Docker Tags
 
-- notifier
-  - a generic docker image capable of sending a discord message to a server via a web hook, no internal logic
-- specific
-  - a specialized version for my specific needs, shifts logic out of github actions
-
-## Goals
-
-### ~~MVP using CI~~ Done! [See MVP tag](https://github.com/mdlopresti/discord_messages/releases/tag/MVP)
-
-1. ~~Automatically send out notifications to discord server channels~~
-2. ~~Use Docker for the runtime environment~~
-3. ~~Use GitHub Actions to run the container~~
-
-### Improvements
-
-1. ~~Push container image into repo instead of building each time~~
-2. ~~Remove message logic from [Github Actions](https://github.com/mdlopresti/discord_messages/blob/master/.github/workflows/scheduled-messages.yml)~~
-3. Remove which week is which logic from [Github Actions](https://github.com/mdlopresti/discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
-
-### Github Actions
-
-Convert [container image](https://hub.docker.com/layers/mdlopresti/discord_messages/) into github action.  [doc link for later]
-
-### Kubernetes
-
-1. Create kubernetes job definition
-    1. Should assign Environment variables via configMaps/secrets
+| tag | description |
+| --- | --- |
+| notifier | a generic docker image capable of sending a discord message to a server via a web hook, no internal logic |
+| specific |  a specialized version for my specific needs, shifts logic out of github actions |
 
 ## Other Documentation
 
-- [Environment Variables for Container](docs/Environment_Variables.md)
+- [Environment Variables for Container](https://github.com/mdlopresti/discord_messages/blob/master/docs/Environment_Variables.md)
+- [Goals](https://github.com/mdlopresti/discord_messages/blob/master/docs/Goals.md)

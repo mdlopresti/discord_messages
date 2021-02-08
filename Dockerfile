@@ -10,5 +10,8 @@ CMD python /tmp/main.py
 FROM notifier as specific
 
 COPY specific.py /tmp/specific.py
+COPY specific.requirements.txt /tmp/specific.requirements.txt
+
+RUN pip install -r /specific.tmp/requirements.txt
 
 CMD python /tmp/specific.py
