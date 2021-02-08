@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-     - .github\workflows\docker-image.yml
+     - .github\workflows\docker-image-specific.yml
      - Dockerfile
      - main.py
      - requirements.txt
@@ -15,7 +15,7 @@ on:
     branches:
       - master
     paths:
-     - .github\workflows\docker-image.yml
+     - .github\workflows\docker-image-specific.yml
      - Dockerfile
      - main.py
      - requirements.txt
