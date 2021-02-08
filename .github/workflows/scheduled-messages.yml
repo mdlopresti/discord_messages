@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "date is $DATE"
           echo "time is $TIME"
-          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
           DATE: ${{ needs.config.outputs.FLESH_AND_STEEL_DATE }}
@@ -58,7 +58,7 @@ jobs:
         run: |
           echo "date is $DATE"
           echo "time is $TIME"
-          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/discord_messages:specific
         env:
           WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
           DATE: ${{ needs.config.outputs.COVID_DATE }}

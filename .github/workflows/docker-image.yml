@@ -36,11 +36,11 @@ jobs:
 
       - name: Build/Push the Docker notifier image
         run: |
-          docker build --target notifier -t mdlopresti/scheduled_discord_messages:notifier -t mdlopresti/scheduled_discord_messages:latest .
-          docker push mdlopresti/scheduled_discord_messages:notifier
-          docker push mdlopresti/scheduled_discord_messages:latest
+          docker build --target notifier -t mdlopresti/discord_messages:notifier -t mdlopresti/discord_messages:latest .
+          docker push mdlopresti/discord_messages:notifier
+          docker push mdlopresti/discord_messages:latest
 
       - name: Build the Docker specific image
         run: |
-          docker build --target specific -t mdlopresti/scheduled_discord_messages:specific .
-          docker push mdlopresti/scheduled_discord_messages:specific
+          docker build --target specific -t mdlopresti/discord_messages:specific .
+          docker push mdlopresti/discord_messages:specific

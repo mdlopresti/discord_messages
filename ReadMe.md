@@ -1,8 +1,8 @@
 # Scheduled Discord Messages
 
-![Docker Image CI](https://github.com/mdlopresti/scheduled_discord_messages/workflows/Docker%20Image%20CI/badge.svg) [![Find on DockerHub](https://img.shields.io/badge/On%20DockerHub%3F-Yup-green)](https://hub.docker.com/layers/mdlopresti/scheduled_discord_messages)
+![Docker Image CI](https://github.com/mdlopresti/discord_messages/workflows/Docker%20Image%20CI/badge.svg) [![Find on DockerHub](https://img.shields.io/badge/On%20DockerHub%3F-Yup-green)](https://hub.docker.com/layers/mdlopresti/discord_messages)
 
-A discord notification bot project.  Currently this process is working via [scheduled github actions](https://github.com/mdlopresti/scheduled_discord_messages/actions?query=workflow%3A%22scheduled+message+sending%22).  
+A discord notification bot project.  Currently this process is working via [scheduled github actions](https://github.com/mdlopresti/discord_messages/actions?query=workflow%3A%22scheduled+message+sending%22).  
 
 The tech used in this project was selected as a learning project, it is definitely not the best approach to take but it is a good enough excuse to learn the tech.
 
@@ -15,7 +15,7 @@ The tech used in this project was selected as a learning project, it is definite
 
 ## Goals
 
-### ~~MVP using CI~~ Done! [See MVP tag](https://github.com/mdlopresti/scheduled_discord_messages/releases/tag/MVP)
+### ~~MVP using CI~~ Done! [See MVP tag](https://github.com/mdlopresti/discord_messages/releases/tag/MVP)
 
 1. ~~Automatically send out notifications to discord server channels~~
 2. ~~Use Docker for the runtime environment~~
@@ -24,12 +24,12 @@ The tech used in this project was selected as a learning project, it is definite
 ### Improvements
 
 1. ~~Push container image into repo instead of building each time~~
-2. ~~Remove message logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)~~
-3. Remove which week is which logic from [Github Actions](https://github.com/mdlopresti/scheduled_discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
+2. ~~Remove message logic from [Github Actions](https://github.com/mdlopresti/discord_messages/blob/master/.github/workflows/scheduled-messages.yml)~~
+3. Remove which week is which logic from [Github Actions](https://github.com/mdlopresti/discord_messages/blob/master/.github/workflows/scheduled-messages.yml)
 
 ### Github Actions
 
-Convert [container image](https://hub.docker.com/layers/mdlopresti/scheduled_discord_messages/) into github action.  [doc link for later]
+Convert [container image](https://hub.docker.com/layers/mdlopresti/discord_messages/) into github action.  [doc link for later]
 
 ### Kubernetes
 
