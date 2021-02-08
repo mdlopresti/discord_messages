@@ -43,15 +43,25 @@ jobs:
     needs: config
     runs-on: ubuntu-20.04
     steps:
-      - name: send notifications
+      - name: send notification to flesh and steel
         shell: bash
         run: |
-          docker run -e WEBHOOK=$DISCORD_FLESH_AND_STEEL_WEBHOOK -e NEXT_DATE="$FLESH_AND_STEEL_DATE" -e NEXT_TIME="$FLESH_AND_STEEL_TIME" mdlopresti/scheduled_discord_messages:specific
+          echo "date is $DATE"
+          echo "time is $TIME"
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
           docker run -e WEBHOOK=$DISCORD_COVID_WEBHOOK -e NEXT_DATE="$COVID_DATE" -e NEXT_TIME="$COVID_TIME" mdlopresti/scheduled_discord_messages:specific
         env:
-          DISCORD_FLESH_AND_STEEL_WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
-          DISCORD_COVID_WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
-          FLESH_AND_STEEL_DATE: ${{ needs.jobs.config.outputs.FLESH_AND_STEEL_DATE }}
-          FLESH_AND_STEEL_TIME: "6:30 PM"
-          COVID_DATE: ${{ needs.jobs.config.outputs.COVID_DATE }}
-          COVID_TIME: "5:30 PM"
+          WEBHOOK: ${{ secrets.DISCORD_FLESH_AND_STEEL_WEBHOOK }}
+          DATE: ${{ needs.jobs.config.outputs.FLESH_AND_STEEL_DATE }}
+          TIME: "6:30 PM"
+
+      - name: send notification to covid
+        shell: bash
+        run: |
+          echo "date is $DATE"
+          echo "time is $TIME"
+          docker run -e WEBHOOK=$WEBHOOK -e NEXT_DATE="$DATE" -e NEXT_TIME="$TIME" mdlopresti/scheduled_discord_messages:specific
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
+          DATE: ${{ needs.jobs.config.outputs.COVID_DATE }}
+          TIME: "5:30 PM"
