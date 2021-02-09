@@ -2,7 +2,7 @@
 
 [![Find on DockerHub](https://img.shields.io/badge/On%20DockerHub%3F-Yup-green)](https://hub.docker.com/r/mdlopresti/discord_messages)
 
-A discord notification bot project.  Currently this process is working via [scheduled github actions](https://github.com/mdlopresti/discord_messages/actions?query=workflow%3A%22scheduled+message+sending%22).  
+A discord notification bot project.  Currently this process is working via [scheduled github actions](https://github.com/mdlopresti/discord_messages/actions?query=workflow%3A%22Send+Messages%22).  
 
 The tech used in this project was selected as a learning project, it is definitely not the best approach to take but it is a good enough excuse to learn the tech.
 
