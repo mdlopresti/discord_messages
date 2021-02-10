@@ -14,6 +14,7 @@ def message():
             
             # calculating the days until the next session
             days_until_session = (next_date - datetime.datetime.now(tz=timezone('US/Eastern')).date()).days
+            print(str(days_until_session) + " days until the next session")
 
             #building message for alert
             if days_until_session == 7:
