@@ -18,9 +18,11 @@ jobs:
           $startdate = [datetime]"10/7/2020 00:00"
           Write-Host "start is $startdate"
           $nextsession = get-date -Hour 0 -Minute 0 -Second 0
-          do {
-            $nextsession = $nextsession.AddDays(1)
-          } until ($nextsession.DayOfWeek -eq "Wednesday")
+          if($nextsession.DayOfWeek -ne "Wednesday") {
+            do {
+              $nextsession = $nextsession.AddDays(1)
+            } until ($nextsession.DayOfWeek -eq "Wednesday")
+          }
 
           Write-Host "The next wednesday is $nextsession"
           $time = New-TimeSpan -start $startdate -end $nextsession
