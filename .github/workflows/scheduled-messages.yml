@@ -62,4 +62,4 @@ jobs:
         env:
           WEBHOOK: ${{ secrets.DISCORD_COVID_WEBHOOK }}
           DATE: ${{ needs.config.outputs.COVID_DATE }}
-          TIME: "5:30 PM"
+          TIME: "6:00 PM"
